@@ -1,0 +1,94 @@
+HaloGaurd/
+├── frontend/
+│   ├── public/                       # Static assets (favicon, robots.txt)
+│   ├── src/
+│   │   ├── components/               # Reusable React components
+│   │   │   ├── UploadForm.tsx        # Image/video upload & webcam capture UI
+│   │   │   ├── ResultDisplay.tsx     # Shows scores, charts, heatmaps
+│   │   │   ├── AuthForms/            # Login, signup
+│   │   │   ├── HistoryList.tsx       # User’s past scans
+│   │   │   └── …                     
+│   │   ├── pages/                    # Next.js pages (or React router views)
+│   │   │   ├── index.tsx             # Landing + detection UI
+│   │   │   ├── login.tsx             
+│   │   │   ├── signup.tsx            
+│   │   │   └── history.tsx           
+│   │   ├── services/                 # API clients
+│   │   │   └── api.ts                # fetch wrappers for FastAPI endpoints
+│   │   ├── hooks/                    # Custom React hooks
+│   │   ├── context/                  # Auth & global state
+│   │   ├── styles/                   # Global CSS / Tailwind config
+│   │   ├── utils/                    # Helper functions (e.g. formatters)
+│   │   └── index.tsx                 # App entrypoint
+│   ├── tsconfig.json
+│   ├── package.json
+│   └── vite.config.ts                # Or next.config.js if using Next.js
+│
+├── backend/
+│   ├── api/
+│   │   ├── routes/
+│   │   │   ├── detect_image.py       # POST /detect/image
+│   │   │   ├── detect_video.py       # POST /detect/video
+│   │   │   ├── detect_stream.py      # WebSocket for webcam frames
+│   │   │   ├── auth.py               # /login, /signup
+│   │   │   └── history.py            # /history endpoints
+│   │   └── deps.py                   # Shared dependencies (DB, oauth)
+│   ├── services/                     # Core inference logic
+│   │   ├── vision_service.py         # image/video CNN/Transformer
+│   │   ├── lip_sync_service.py       # audio–visual sync detector
+│   │   ├── rppg_service.py           # physiological pulse analysis
+│   │   ├── fusion_service.py         # ensemble / score fusion
+│   │   └── explain_service.py        # Grad-CAM & prototype explanations
+│   ├── models/                       # Model definitions & loaders
+│   │   ├── image_model.py            # e.g. ViT / Xception wrapper
+│   │   ├── video_model.py            # TimeSformer / 3D-CNN wrapper
+│   │   ├── audio_model.py            # acoustic deepfake detector
+│   │   ├── lip_model.py              # SyncNet or transformer lip model
+│   │   └── rppg_model.py             # CNN for pulse-map classification
+│   ├── utils/                        # Shared utilities
+│   │   ├── frame_extractor.py        # FFmpeg/OpenCV video → frames
+│   │   ├── face_cropper.py           # MediaPipe/Dlib face & landmark crop
+│   │   ├── audio_extractor.py        # FFmpeg → WAV / spectrogram
+│   │   ├── logging.py                # loguru / structlog setup
+│   │   └── config.py                 # Pydantic settings (paths, secrets)
+│   ├── auth/                         # (Optional) User management
+│   │   ├── models.py                 # SQLAlchemy User, ScanHistory
+│   │   ├── crud.py                   # DB operations
+│   │   └── security.py               # JWT, password hashing
+│   ├── explain/                      # (Optional) XAI training & tooling
+│   │   └── prototype_builder.py      # DPNet-style prototype learner
+│   ├── main.py                       # FastAPI app & router includes
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── data_pipeline/                    # (For data prep & training)
+│   ├── download_datasets.py          # Scripts to fetch FF++ / DFDC
+│   ├── preprocess_frames.py          # Crop, resize, augment
+│   ├── extract_audio.py              # Generate mel-spectrograms
+│   └── train_models.py               # Example training loops / configs
+│
+├── pretrained_models/                # Large weights & exports
+│   ├── vit_deepfake.pt
+│   ├── timesformer_deepfake.pt
+│   ├── syncnet.pth
+│   └── pulse_cnn.onnx
+│
+├── tests/
+│   ├── test_api.py                   # Integration tests (requests → responses)
+│   ├── test_services.py              # Unit tests for each service module
+│   └── test_utils.py                 # Frame/audio extraction tests
+│
+├── docs/
+│   ├── architecture.md               # System diagram & component flow
+│   ├── setup_guide.md                # Local dev & Docker instructions
+│   ├── deployment.md                 # CI/CD, Kubernetes manifests
+│   └── model_card.md                 # Model descriptions and metrics
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml                    # Lint, test, build, push Docker images
+│
+├── docker-compose.yml                # Local dev services (backend, frontend, db)
+├── .env.example                      # API keys, DB URLs, secrets
+├── README.md                         # Project overview, quick start
+└── LICENSE
