@@ -95,9 +95,18 @@ const Index = () => {
               </Button>
             )}
             
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
+            {user && (
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  logout();
+                }}
+                className="web-ripple"
+              >
+                <User className="w-4 h-4 mr-2" />
+                {user.username}
+              </Button>
+            )}
           </nav>
 
           {/* Mobile menu button */}
