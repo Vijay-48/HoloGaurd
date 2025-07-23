@@ -73,7 +73,7 @@ const Index = () => {
               Scanner
             </Button>
             
-            <SignedIn>
+            {user && (
               <Button
                 variant={currentView === 'history' ? 'default' : 'ghost'}
                 onClick={() => setCurrentView('history')}
@@ -82,7 +82,7 @@ const Index = () => {
                 <History className="w-4 h-4 mr-2" />
                 History
               </Button>
-            </SignedIn>
+            )}
             
             <SignedOut>
               <Button
