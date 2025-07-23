@@ -84,7 +84,7 @@ const Index = () => {
               </Button>
             )}
             
-            <SignedOut>
+            {!user && (
               <Button
                 variant={currentView === 'auth' ? 'default' : 'outline'}
                 onClick={() => setCurrentView('auth')}
@@ -93,7 +93,7 @@ const Index = () => {
                 <LogIn className="w-4 h-4 mr-2" />
                 Sign In
               </Button>
-            </SignedOut>
+            )}
             
             <SignedIn>
               <UserButton afterSignOutUrl="/" />
