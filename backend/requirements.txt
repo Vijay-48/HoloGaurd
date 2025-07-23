@@ -16,3 +16,4 @@ mediapipe
 librosa
 loguru
 python-dotenv
+onnxruntime
