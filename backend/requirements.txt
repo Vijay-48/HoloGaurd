@@ -15,5 +15,5 @@ timm>=0.6.12
 mediapipe
 librosa
 loguru
-python-dotenv
+pydantic-settings
 onnxruntime
