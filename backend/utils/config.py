@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     VIT_MODEL_PATH: str = "pretrained_models/vit_deepfake.pt"
     TIMESFORMER_MODEL_PATH: str = "pretrained_models/timesformer_deepfake.pt"
     SYNCNET_MODEL_PATH: str = "pretrained_models/syncnet.pth"
+    RPPG_MODEL_PATH: str = "pretrained_models/pulse_cnn.onnx"
 
     TARGET_IMAGE_SIZE: int = 224
     CLIP_LENGTH: int = 16  # number of frames per video clip
