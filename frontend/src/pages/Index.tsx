@@ -136,7 +136,7 @@ const Index = () => {
                 Scanner
               </Button>
               
-              <SignedIn>
+              {user && (
                 <Button
                   variant={currentView === 'history' ? 'default' : 'ghost'}
                   onClick={() => {
@@ -148,9 +148,9 @@ const Index = () => {
                   <History className="w-4 h-4 mr-2" />
                   History
                 </Button>
-              </SignedIn>
+              )}
               
-              <SignedOut>
+              {!user && (
                 <Button
                   variant={currentView === 'auth' ? 'default' : 'ghost'}
                   onClick={() => {
@@ -162,13 +162,23 @@ const Index = () => {
                   <LogIn className="w-4 h-4 mr-2" />
                   Sign In
                 </Button>
-              </SignedOut>
+              )}
               
-              <SignedIn>
+              {user && (
                 <div className="px-4 py-2">
-                  <UserButton afterSignOutUrl="/" />
+                  <Button
+                    variant="ghost"
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full justify-start web-ripple"
+                  >
+                    <User className="w-4 h-4 mr-2" />
+                    {user.username}
+                  </Button>
                 </div>
-              </SignedIn>
+              )}
             </div>
           </div>
         )}
