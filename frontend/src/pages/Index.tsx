@@ -15,7 +15,7 @@ type ViewState = 'scanner' | 'history' | 'auth';
 type AuthMode = 'login' | 'signup';
 
 const Index = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [currentView, setCurrentView] = useState<ViewState>('scanner');
   const [authMode, setAuthMode] = useState<AuthMode>('login');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
