@@ -6,7 +6,7 @@ import './index.css';
 
 
 
-if (!PUBLISHABLE_KEY) {
+
   throw new Error("Missing Clerk Publishable Key");
 }
 
