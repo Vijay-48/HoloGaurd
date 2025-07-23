@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Shield, LogIn, History, Menu, X, User } from 'lucide-react';
-import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
+
 import { Button } from '@/components/ui/button';
 import UploadForm from '@/components/UploadForm';
 import ResultDisplay from '@/components/ResultDisplay';
