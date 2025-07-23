@@ -7,7 +7,7 @@ import './index.css';
 
 
 
-  throw new Error("Missing Clerk Publishable Key");
+
 }
 
 createRoot(document.getElementById("root")!).render(
